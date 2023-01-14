@@ -1,3 +1,6 @@
 import './index.css'
 
-console.log(1)
+const testFunc = () => console.log(1);
+
+testFunc()
+
