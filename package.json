@@ -12,7 +12,8 @@
     "lint:scripts": "eslint --ext .ts,.tsx src",
     "lint:scripts:fix": "npm run lint:scripts -- --fix",
     "lint:styles": "stylelint \"src/**/*.css\"",
-    "lint:styles:fix": "npm run lint:styles -- --fix"
+    "lint:styles:fix": "npm run lint:styles -- --fix",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
