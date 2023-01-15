@@ -12,25 +12,24 @@ const getAlias = (aliases: string[]): AliasOptions =>
   }))
 
 const alias: AliasOptions = getAlias([
-  'components',
-  'types',
-  'assets',
-  'pages',
   'api',
+  'assets',
+  'components',
   'constants',
-  'utils',
+  'enums',
   'helpers',
-  'router',
   'interfaces',
+  'pages',
+  'router',
+  'types',
+  'utils',
 ])
 
 /**
  * @see https://vitejs.dev/config/
  */
 export default defineConfig({
-  plugins: [
-    tscPlugin(),
-  ],
+  plugins: [tscPlugin()],
   resolve: {
     alias,
   },
