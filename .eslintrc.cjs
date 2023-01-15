@@ -28,6 +28,7 @@ module.exports = {
   },
   plugins: ['@typescript-eslint'],
   rules: {
+    'import/prefer-default-export': 'off',
     'import/no-absolute-path': 'off',
     '@typescript-eslint/array-type': [
       'error',
@@ -81,16 +82,7 @@ module.exports = {
     ],
     'no-throw-literal': 'off',
     '@typescript-eslint/no-throw-literal': 'error',
-    'no-magic-numbers': 'off',
-    '@typescript-eslint/no-magic-numbers': [
-      'off',
-      {
-        ignoreArrayIndexes: true,
-        ignoreEnums: true,
-        ignoreNumericLiteralTypes: true,
-        ignoreTypeIndexes: true,
-      },
-    ],
+    'no-magic-numbers': 'error',
     'default-param-last': 'off',
     '@typescript-eslint/default-param-last': 'warn',
     'no-use-before-define': 'off',
@@ -175,17 +167,11 @@ module.exports = {
       'error',
       {
         groups: ['external', ['builtin', 'internal', 'unknown', 'parent', 'sibling', 'index', 'object', 'type']],
-        pathGroupsExcludedImportTypes: ['react'],
         pathGroups: [
           {
             pattern: '@/**',
             group: 'external',
             position: 'after',
-          },
-          {
-            pattern: 'react',
-            group: 'external',
-            position: 'before',
           },
         ],
         alphabetize: { order: 'asc' },
@@ -194,7 +180,10 @@ module.exports = {
     ],
     'import/no-deprecated': 'warn',
     'import/no-unresolved': 'off',
-    'import/no-extraneous-dependencies': ['error'],
+    'import/no-extraneous-dependencies': [
+      'error',
+      { devDependencies: false, optionalDependencies: false, peerDependencies: false },
+    ],
     'import/namespace': ['warn', { allowComputed: true }],
     'prettier/prettier': [
       'error',
@@ -216,10 +205,5 @@ module.exports = {
         usePrettierrc: true,
       },
     ],
-  },
-  settings: {
-    react: {
-      version: 'detect',
-    },
   },
 }

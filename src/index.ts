@@ -1,6 +1,7 @@
 import './index.css'
 
-const testFunc = () => console.log(1);
+import { renderComponent } from 'router'
 
-testFunc()
-
+window.addEventListener('load', renderComponent)
+window.addEventListener('hashchange', renderComponent)
+window.onpopstate = renderComponent
