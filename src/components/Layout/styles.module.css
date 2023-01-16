@@ -1,0 +1,17 @@
+.body {
+  display: grid;
+  grid-template-areas: "header"
+    "main"
+    "footer";
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  background-image: url(assets/images/bg-briсks-wall.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.main {
+  grid-area: main;
+  padding: 1rem;
+}

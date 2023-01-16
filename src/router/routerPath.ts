@@ -1,4 +1,4 @@
-export const routerPathes = {
+export const routerPath = {
   home: '/',
 
   garage: '/garage',

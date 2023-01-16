@@ -1,13 +1,12 @@
 import { SYMBOL } from 'enums'
 import { urlInstanse } from 'helpers'
-import { notFoundRoute, rootRoute, router, RouterOwnObject } from 'router'
-import { routerPathes } from 'router/routerPathes'
+import { notFoundRoute, rootRoute, router, RouterOwnObject, routerPath } from 'router'
 
 export const getRoute = () => {
   const url = urlInstanse.getUrl()
   const { pathname } = url
 
-  if (pathname === routerPathes.home) {
+  if (pathname === routerPath.home) {
     return rootRoute
   }
 
