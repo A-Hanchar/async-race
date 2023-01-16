@@ -12,8 +12,8 @@ export const Garage = async () => {
 
   const cars = await getCars()
 
-  cars.forEach(({ color, id, name }) => {
-    wrapper.append(ManagedCar({ carId: id, color, name }))
+  cars.forEach(async ({ color, id, name }) => {
+    wrapper.append(await ManagedCar({ carId: id, color, name }))
   })
 
   return wrapper
