@@ -1,0 +1,12 @@
+export enum HYUNDAY_MODEL {
+  ACCENT = 'ACCENT',
+  ELANTRA = 'ELANTRA',
+  EQUUS = 'EQUUS',
+  GETZ = 'GETZ',
+  KONA = 'KONA',
+  SONATA = 'SONATA',
+  SANTA_FE = 'SANTA_FE',
+  VENUE = 'VENUE',
+  TUCSON = 'TUCSON',
+  MATRIX = 'MATRIX',
+}
