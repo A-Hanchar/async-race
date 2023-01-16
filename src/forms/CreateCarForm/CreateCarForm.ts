@@ -38,9 +38,7 @@ export const CreateCarForm = ({ onCancel }: CreateCarFormProps) => {
     modelLabel.remove()
   })
 
-  modelSelect.addEventListener('input', () => {
-    updateSubmitButton()
-  })
+  modelSelect.addEventListener('input', updateSubmitButton)
 
   submitButton.addEventListener('click', async () => {
     const manufactoryValue = manufactorySelect.value as CARS_MANUFACTORY | ''

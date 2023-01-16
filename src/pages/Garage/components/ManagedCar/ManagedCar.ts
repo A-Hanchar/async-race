@@ -9,12 +9,12 @@ import { StartEngine } from '../StartEngine'
 import { StopEngine } from '../StopEngine'
 import { UpdateCar } from '../UpdateCar'
 
-export const ManagedCar = ({ color, carId, name }: ManagedCarProps) => {
+export const ManagedCar = async ({ color, carId, name }: ManagedCarProps) => {
   const wrapper = createElementWithClassName({ tagName: 'div', classname: styles.carWrapper })
   const manageCarButtons = createElementWithClassName({ tagName: 'div', classname: styles.manageCarButtons })
   const engineButtonsWrapper = createElementWithClassName({ tagName: 'div', classname: styles.engineButtonsWrapper })
 
-  manageCarButtons.append(UpdateCar({ carId }), RemoveCar({ carId }))
+  manageCarButtons.append(await UpdateCar({ carId }), RemoveCar({ carId }))
 
   engineButtonsWrapper.append(StartEngine({ carId }), StopEngine({ carId }))
 

@@ -6,12 +6,18 @@ import { UpdateCarForm } from 'forms/UpdateCarForm'
 import styles from './styles.module.css'
 import { UpdateCarProps } from './types'
 
-export const UpdateCar = ({ carId }: UpdateCarProps) => {
-  const modal = Modal({ children: UpdateCarForm(), title: 'Update Car' })
+export const UpdateCar = async ({ carId }: UpdateCarProps) => {
+  const handleCloseModal = () => {
+    Body.removeChild(modal)
+  }
 
   const handleButtonClick = () => {
     Body.append(modal)
   }
+
+  const updateCarForm = await UpdateCarForm({ onCancel: handleCloseModal, carId })
+
+  const modal = Modal({ children: updateCarForm, title: 'Update Car' })
 
   const button = Button({ children: 'Update', classname: styles.button, onclick: handleButtonClick })
 
