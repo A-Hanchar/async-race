@@ -26,7 +26,6 @@
     "suppressImplicitAnyIndexErrors": false,
     "noStrictGenericChecks": false,
     "exactOptionalPropertyTypes": false,
-    "types": ["vitest/globals"],
     "emitBOM": false,
     "importHelpers": true,
     "noEmit": true,

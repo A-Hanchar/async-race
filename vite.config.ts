@@ -1,5 +1,3 @@
-/// <reference types="vitest" />
-
 import { AliasOptions, defineConfig } from 'vite'
 import { tscPlugin } from 'vite-plugin-tsc-watch'
 
@@ -15,8 +13,9 @@ const alias: AliasOptions = getAlias([
   'api',
   'assets',
   'components',
-  'constants',
+  'variables',
   'enums',
+  'forms',
   'helpers',
   'interfaces',
   'pages',
