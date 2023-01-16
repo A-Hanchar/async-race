@@ -1,9 +1,11 @@
+import { createElementWithClassName } from 'helpers'
 import { renderComponent } from 'router'
 
+import styles from './styles.module.css'
 import { LinkProps } from './types'
 
-export const Link = ({ href, target = '_self', children }: LinkProps) => {
-  const a = document.createElement('a')
+export const Link = ({ href, target = '_self', children, classname, type = 'gold' }: LinkProps) => {
+  const a = createElementWithClassName({ tagName: 'a', classname: [styles.link, styles[type], classname] })
   children && a.append(children)
 
   a.href = href

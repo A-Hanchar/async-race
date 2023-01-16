@@ -1,26 +1,25 @@
-import { Home, NotFound, Garage, Winners } from 'pages'
+import { NotFound, Garage, Winners } from 'pages'
 
-import { routerPathes } from './routerPathes'
+import { routerPath } from './routerPath'
 import { RouterOwnObject } from './types'
 
 export const rootRoute: RouterOwnObject = {
-  path: routerPathes.home,
-  content: Home,
+  path: routerPath.home,
 }
 
 export const notFoundRoute: RouterOwnObject = {
-  path: routerPathes.notFound,
+  path: routerPath.notFound,
   content: NotFound,
 }
 
 export const router: RouterOwnObject[] = [
   rootRoute,
   {
-    path: routerPathes.garage,
+    path: routerPath.garage,
     content: Garage,
   },
   {
-    path: routerPathes.winners,
+    path: routerPath.winners,
     content: Winners,
   },
   notFoundRoute,

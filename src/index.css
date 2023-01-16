@@ -1,4 +1,2 @@
-:root {
-  /* COLOR VARIABLES */
-  --color-white: #FFF;
-}
+@import url(./assets/styles/normalize.css);
+@import url(./assets/styles/variables.css);
