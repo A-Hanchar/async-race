@@ -1,0 +1,12 @@
+export enum TAYOTA_MODEL {
+  CARINA = 'CARINA',
+  COROLLA = 'COROLLA',
+  DYNA = 'DYNA',
+  HIACE = 'HIACE',
+  LAND_CRUISER = 'LAND_CRUISER',
+  PRIUS = 'PRIUS',
+  AQUA = 'AQUA',
+  AURIS = 'AURIS',
+  AVALON = 'AVALON',
+  CAMRY = 'CAMRY',
+}

@@ -1,12 +1,13 @@
 import { Body } from 'components/Body'
 import { createElementWithClassName } from 'helpers'
-import { PropsWithChildren } from 'types'
 
 import { CloseButton } from './components/CloseButton'
+import { Title } from './components/Title'
 
 import styles from './styles.module.css'
+import { ModalProps } from './types'
 
-export const Modal = ({ children }: PropsWithChildren) => {
+export const Modal = ({ children, title }: ModalProps) => {
   const handleModalClose = () => {
     Body.removeChild(wrapper)
   }
@@ -14,7 +15,7 @@ export const Modal = ({ children }: PropsWithChildren) => {
   const wrapper = createElementWithClassName({ tagName: 'div', classname: styles.wrapper })
   const contentWrapper = createElementWithClassName({ tagName: 'div', classname: styles.contentWrapper })
 
-  contentWrapper.append(CloseButton({ onclick: handleModalClose }), children ?? '')
+  contentWrapper.append(CloseButton({ onclick: handleModalClose }), Title({ title }), children ?? '')
 
   wrapper.addEventListener('click', (event) => {
     const isPopupContentArea = event.composedPath().includes(contentWrapper)

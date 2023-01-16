@@ -1,0 +1,12 @@
+export enum CHEVROLET_MODEL {
+  CAMARO = 'CAMARO',
+  CORVETTE = 'CORVETTE',
+  CRUZE = 'CRUZE',
+  EPICA = 'EPICA',
+  IMPALA = 'IMPALA',
+  MALIBU = 'MALIBU',
+  MENLO = 'MENLO',
+  NIVA = 'NIVA',
+  TRAX = 'TRAX',
+  VOLT = 'VOLT',
+}

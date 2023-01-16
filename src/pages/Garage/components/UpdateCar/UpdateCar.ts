@@ -7,7 +7,7 @@ import styles from './styles.module.css'
 import { UpdateCarProps } from './types'
 
 export const UpdateCar = ({ carId }: UpdateCarProps) => {
-  const modal = Modal({ children: UpdateCarForm() })
+  const modal = Modal({ children: UpdateCarForm(), title: 'Update Car' })
 
   const handleButtonClick = () => {
     Body.append(modal)
