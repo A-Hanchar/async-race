@@ -19,10 +19,7 @@ export const getRoute = () => {
 
     const [pathName] = pathnames
 
-    return (
-      routes.find(({ path }) => (path.includes(SYMBOL.COLON) ? true : path === `${SYMBOL.SLASH}${pathName!}`)) ??
-      notFoundRoute
-    )
+    return routes.find(({ path }) => path === `${SYMBOL.SLASH}${pathName!}`) ?? notFoundRoute
   }
 
   const pathNameParts = pathname.split(SYMBOL.SLASH).filter(Boolean)

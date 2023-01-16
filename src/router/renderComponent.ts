@@ -4,7 +4,7 @@ import { Layout } from 'components/Layout'
 import { routerPath } from './routerPath'
 import { getRoute } from './utils'
 
-export const renderComponent = () => {
+export const renderComponent = async () => {
   const route = getRoute()
 
   if (route.path === routerPath.notFound) {
@@ -15,5 +15,7 @@ export const renderComponent = () => {
     window.history.pushState({}, '', routerPath.garage)
   }
 
-  Body.replaceChildren(Layout({ children: route.content?.() }))
+  const children = await route.content?.()
+
+  Body.replaceChildren(Layout({ children }))
 }

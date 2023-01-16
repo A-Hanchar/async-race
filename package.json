@@ -45,7 +45,6 @@
   },
   "dependencies": {
     "vite": "^4.0.4",
-    "vite-plugin-tsc-watch": "^2.0.1",
-    "vitest": "^0.27.1"
+    "vite-plugin-tsc-watch": "^2.0.1"
   }
 }

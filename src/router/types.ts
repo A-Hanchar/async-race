@@ -2,6 +2,6 @@ export type RoutePathesKeys = 'home' | 'garage' | 'winners'
 
 export type RouterOwnObject = {
   path: string
-  content?: () => Node
+  content?: () => Node | Promise<Node>
   childrenRoutes?: RouterOwnObject[]
 }

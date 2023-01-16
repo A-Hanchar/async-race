@@ -1,0 +1,18 @@
+.startEngineButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-green);
+  cursor: pointer;
+  background: none;
+  border: 1px solid var(--color-green);
+  border-radius: 4px;
+}
+
+.startEngineButton.disabled {
+  cursor: not-allowed;
+}

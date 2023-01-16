@@ -1,0 +1,19 @@
+.carWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.manageCarButtons {
+  display: flex;
+  gap: 16px;
+}
+
+.engineButtonsWrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.road {
+  border-bottom: 2px dashed var(--color-white);
+}
