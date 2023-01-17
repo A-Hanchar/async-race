@@ -1,5 +1,12 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 2.625rem;
+  font-weight: 700;
+  color: var(--color-white);
 }

@@ -1,7 +1,7 @@
 export { SYMBOL } from './SYMBOL'
 export { CARS_MANUFACTORY } from './CARS_MANUFACTORY'
 export { TAYOTA_MODEL } from './TAYOTA_MODEL'
-export { HYUNDAY_MODEL } from './HYUNDAY_MODEL'
+export { HYUNDAI_MODEL } from './HYUNDAI_MODEL'
 export { MERCEDES_BENZ_MODEL } from './MERCEDES_BENZ_MODEL'
 export { BMW_MODEL } from './BMW_MODEL'
 export { CHEVROLET_MODEL } from './CHEVROLET_MODEL'

@@ -1,5 +1,6 @@
 import { createCar, CreateCarRequestData } from 'api/garage'
 import { Button } from 'components/Button'
+import { CARS_MANUFACTORY } from 'enums'
 import { getRandomColorHex, getRandomInt } from 'utils'
 import { manufactoriesOptions, modelOptionsByManufactories, one, zero } from 'variables'
 
@@ -15,11 +16,11 @@ export const GenerateCars = () => {
 
     for (let i = zero; i < countGenerateCar; i += one) {
       const color = getRandomColorHex()
-      const manufactory = manufactoriesOptions[getRandomInt(manufactoriesOptions.length)]!.value
+      const manufactory = manufactoriesOptions[getRandomInt(manufactoriesOptions.length)]?.value ?? CARS_MANUFACTORY.BMW
 
       const carModels = modelOptionsByManufactories[manufactory]
 
-      const model = manufactoriesOptions[getRandomInt(carModels.length)]!.value
+      const model = carModels[getRandomInt(carModels.length)]?.value ?? modelOptionsByManufactories.BMW[zero]!.value
 
       carsData.push({
         color,

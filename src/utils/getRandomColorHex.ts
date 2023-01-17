@@ -1,12 +1,11 @@
 import { SYMBOL } from 'enums'
+import { one, zero } from 'variables'
 
 import { getRandomInt } from './getRandomInt'
 
 export const getRandomColorHex = () => {
   const letters = '0123456789ABCDEF'
 
-  const zero = 0
-  const one = 1
   const maxHexLetters = 6
 
   const randomHexLetters = []

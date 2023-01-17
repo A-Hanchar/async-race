@@ -1,11 +1,10 @@
-export interface ICar {
-  name: string
-  color: string
-  id: number
-}
-
 export type CreateCarRequestData = {
   model: string
   manufactory: string
   color: string
+}
+
+export type QueryParams = {
+  _limit?: number
+  _page?: number
 }

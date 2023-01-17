@@ -14,8 +14,8 @@ export const manufactoriesOptions = [
     text: 'Ford',
   },
   {
-    value: CARS_MANUFACTORY.HYUNDAY,
-    text: 'Hyunday',
+    value: CARS_MANUFACTORY.HYUNDAI,
+    text: 'Hyundai',
   },
   {
     value: CARS_MANUFACTORY.KIA,
