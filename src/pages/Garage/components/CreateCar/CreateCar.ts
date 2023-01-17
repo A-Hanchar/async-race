@@ -6,6 +6,10 @@ import { CreateCarForm } from 'forms/CreateCarForm'
 import styles from './styles.module.css'
 
 export const CreateCar = () => {
+  const resetCreateCarForm = () => {
+    createCarForm.reset()
+  }
+
   const handleCloseModal = () => {
     Body.removeChild(modal)
   }
@@ -14,9 +18,8 @@ export const CreateCar = () => {
     Body.append(modal)
   }
 
-  const modal = Modal({ children: CreateCarForm({ onCancel: handleCloseModal }), title: 'Create Car' })
+  const createCarForm = CreateCarForm({ onCancel: handleCloseModal })
+  const modal = Modal({ children: createCarForm, title: 'Create Car', onCancel: resetCreateCarForm })
 
-  const button = Button({ children: 'Create Car', classname: styles.button, onclick: handleButtonClick })
-
-  return button
+  return Button({ children: 'Create Car', classname: styles.button, onclick: handleButtonClick })
 }

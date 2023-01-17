@@ -12,7 +12,3 @@
   border: 1px solid var(--color-red);
   border-radius: 4px;
 }
-
-.stopEngineButton.disabled {
-  cursor: not-allowed;
-}

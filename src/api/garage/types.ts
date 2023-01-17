@@ -3,3 +3,9 @@ export interface ICar {
   color: string
   id: number
 }
+
+export type CreateCarRequestData = {
+  model: string
+  manufactory: string
+  color: string
+}

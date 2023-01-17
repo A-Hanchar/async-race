@@ -1,7 +1,7 @@
-import { createCar } from 'api'
+import { createCar } from 'api/garage'
 import { CARS_MANUFACTORY } from 'enums'
-import { createElementWithClassName } from 'helpers'
-import { addOptionsToSelect } from 'helpers/addOptionsToSelect'
+import { addOptionsToSelect, createElementWithClassNameAndAppendNode } from 'helpers'
+import { EmptyString } from 'types'
 import { modelOptionsByManufactories } from 'variables'
 
 import { ActionButtons } from './components/ActionButtons'
@@ -12,8 +12,6 @@ import styles from './styles.module.css'
 import { CreateCarFormProps } from './types'
 
 export const CreateCarForm = ({ onCancel }: CreateCarFormProps) => {
-  const form = createElementWithClassName({ tagName: 'form', classname: styles.form })
-
   const { label: colorLabel, input: colorInput } = ColorPick()
   const { label: manufactoryLabel, select: manufactorySelect } = ManufactorySelect()
   const { label: modelLabel, select: modelSelect } = ModelSelect()
@@ -24,7 +22,7 @@ export const CreateCarForm = ({ onCancel }: CreateCarFormProps) => {
   }
 
   manufactorySelect.addEventListener('input', () => {
-    const manufactoryValue = manufactorySelect.value as CARS_MANUFACTORY | ''
+    const manufactoryValue = manufactorySelect.value as CARS_MANUFACTORY | EmptyString
 
     if (manufactoryValue) {
       manufactoryLabel.after(modelLabel)
@@ -54,7 +52,11 @@ export const CreateCarForm = ({ onCancel }: CreateCarFormProps) => {
     }
   })
 
-  form.append(colorLabel, manufactoryLabel, actionButtonsWrapper)
+  const form = createElementWithClassNameAndAppendNode({
+    tagName: 'form',
+    classname: styles.form,
+    children: [colorLabel, manufactoryLabel, actionButtonsWrapper],
+  })
 
   return form
 }

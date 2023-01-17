@@ -20,10 +20,6 @@
   },
   "author": "Artsiom Hanchar",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/A-Hanchar/async-race/issues"
-  },
-  "homepage": "https://github.com/A-Hanchar/async-race#readme",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.48.1",
     "@typescript-eslint/parser": "^5.48.1",

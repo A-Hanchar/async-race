@@ -1,13 +1,16 @@
-import { createElementWithClassName } from 'helpers'
+import { Input } from 'components/Input'
+import { LabelWithFormElement } from 'components/LabelWithFormElement'
 
 import inputStyles from '../input.module.css'
 
 export const ColorPick = () => {
-  const label = createElementWithClassName({ tagName: 'label', classname: inputStyles.label })
-  const input = createElementWithClassName({ tagName: 'input' })
+  const input = Input({ type: 'color' })
 
-  input.type = 'color'
-  label.append('Car Color:', input)
+  const label = LabelWithFormElement({
+    labelTitle: 'Car Color: ',
+    classname: inputStyles.label,
+    managedElement: input,
+  })
 
   return { label, input }
 }

@@ -1,7 +1,7 @@
 import { addClassnameToElement } from 'helpers'
 import { converterPxToRem } from 'utils'
 
-import { initialFillColor, initialHeight, initialViewBox, initialWidth } from './constants'
+import { initialFillColor, initialHeight, initialViewBox, initialWidth, linkW3OrgSVG } from './constants'
 import { SVGContainerProps } from './types'
 
 export const SVGContainer = ({
@@ -11,7 +11,7 @@ export const SVGContainer = ({
   viewBox = initialViewBox,
   classname,
 }: SVGContainerProps) => {
-  const svg: SVGSVGElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+  const svg = document.createElementNS(linkW3OrgSVG, 'svg')
 
   addClassnameToElement({ element: svg, classname })
 

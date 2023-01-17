@@ -1,4 +1,4 @@
-export { oneRem } from './oneRem'
+export * from './variables'
 export { manufactoriesOptions } from './manufactoriesOptions'
 export { modelOptionsByManufactories } from './modelOptionsByManufactories'
 export { tayotaModelOptions } from './tayotaModelOptions'

@@ -1,4 +1,4 @@
-import { deleteCar } from 'api/garage/deleteCar'
+import { deleteCar } from 'api/garage'
 import { Button } from 'components/Button'
 
 import styles from './styles.module.css'
@@ -9,7 +9,5 @@ export const RemoveCar = ({ carId }: RemoveCarProps) => {
     await deleteCar(carId)
   }
 
-  const button = Button({ children: 'Remove', classname: styles.button, onclick: handleClick })
-
-  return button
+  return Button({ children: 'Remove', classname: styles.button, onclick: handleClick })
 }

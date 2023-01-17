@@ -1,4 +1,4 @@
-import { createElementWithClassName } from 'helpers'
+import { createElementWithClassNameAndAppendNode } from 'helpers'
 
 import styles from './styles.module.css'
 import { ManagedCarProps } from './types'
@@ -10,19 +10,31 @@ import { StopEngine } from '../StopEngine'
 import { UpdateCar } from '../UpdateCar'
 
 export const ManagedCar = async ({ color, carId, name }: ManagedCarProps) => {
-  const wrapper = createElementWithClassName({ tagName: 'div', classname: styles.carWrapper })
-  const manageCarButtons = createElementWithClassName({ tagName: 'div', classname: styles.manageCarButtons })
-  const engineButtonsWrapper = createElementWithClassName({ tagName: 'div', classname: styles.engineButtonsWrapper })
+  const updateCarButton = await UpdateCar({ carId })
 
-  manageCarButtons.append(await UpdateCar({ carId }), RemoveCar({ carId }))
+  const manageCarButtons = createElementWithClassNameAndAppendNode({
+    tagName: 'div',
+    classname: styles.manageCarButtons,
+    children: [updateCarButton, RemoveCar({ carId })],
+  })
 
-  engineButtonsWrapper.append(StartEngine({ carId }), StopEngine({ carId }))
+  const engineButtonsWrapper = createElementWithClassNameAndAppendNode({
+    tagName: 'div',
+    classname: styles.engineButtonsWrapper,
+    children: [StartEngine({ carId }), StopEngine({ carId })],
+  })
 
-  const roadWrapper = createElementWithClassName({ tagName: 'div', classname: styles.road })
+  const roadWrapper = createElementWithClassNameAndAppendNode({
+    tagName: 'div',
+    classname: styles.road,
+    children: Car({ color }),
+  })
 
-  roadWrapper.append(Car({ color }))
-
-  wrapper.append(CarTitle({ color, name }), manageCarButtons, engineButtonsWrapper, roadWrapper)
+  const wrapper = createElementWithClassNameAndAppendNode({
+    tagName: 'div',
+    classname: styles.carWrapper,
+    children: [CarTitle({ color, name }), manageCarButtons, engineButtonsWrapper, roadWrapper],
+  })
 
   return wrapper
 }
