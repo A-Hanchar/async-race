@@ -1,6 +1,7 @@
 import { BASE_URL, garage } from 'api/endPoints'
+import { ICar } from 'interfaces'
 
-import { CreateCarRequestData, ICar } from './types'
+import { CreateCarRequestData } from './types'
 
 export const createCar = async ({ manufactory, model, color }: CreateCarRequestData) => {
   const body = {

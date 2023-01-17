@@ -1,17 +1,17 @@
 .carWrapper {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .manageCarButtons {
   display: flex;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .engineButtonsWrapper {
   display: flex;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .road {

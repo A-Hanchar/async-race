@@ -5,7 +5,7 @@ import { bmwModelOptions } from './bmwModelOptions'
 import { chevroletModelOptions } from './chevroletModelOptions'
 import { fordModelOptions } from './fordModelOptions'
 
-import { hyundayModelOptions } from './hyundayModelOptions'
+import { hyundaiModelOptions } from './hyundaiModelOptions'
 import { kiaModelOptions } from './kiaModelOptions'
 import { lexusModelOptions } from './lexusModelOptions'
 import { mercedesBenzModelOptions } from './mercedesBenzModelOptions'
@@ -14,7 +14,7 @@ import { tayotaModelOptions } from './tayotaModelOptions'
 import { volkswagenModelOptions } from './volkswagenModelOptions'
 
 export const modelOptionsByManufactories: Record<CARS_MANUFACTORY, SelectOption[]> = {
-  HYUNDAY: hyundayModelOptions,
+  HYUNDAI: hyundaiModelOptions,
   BMW: bmwModelOptions,
   CHEVROLET: chevroletModelOptions,
   FORD: fordModelOptions,

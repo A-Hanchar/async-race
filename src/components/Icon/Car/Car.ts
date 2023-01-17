@@ -1,9 +1,13 @@
+import { addClassnameToElement } from 'helpers'
+
 import { SVGContainer } from '../SVGContainer'
 import { linkW3OrgSVG } from '../SVGContainer/constants'
 import { IconProps } from '../types'
 
-export const Car = ({ fill, width, height }: IconProps) => {
+export const Car = ({ fill, width, height, classname }: IconProps) => {
   const svg = SVGContainer({ fill, width, height, viewBox: '0 0 700 200 ' })
+
+  addClassnameToElement({ element: svg, classname })
 
   const iconPath = document.createElementNS(linkW3OrgSVG, 'path')
 

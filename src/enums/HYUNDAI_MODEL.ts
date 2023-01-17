@@ -1,4 +1,4 @@
-export enum HYUNDAY_MODEL {
+export enum HYUNDAI_MODEL {
   ACCENT = 'ACCENT',
   ELANTRA = 'ELANTRA',
   EQUUS = 'EQUUS',

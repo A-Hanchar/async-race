@@ -1,6 +1,5 @@
 import { BASE_URL, garage } from 'api/endPoints'
-
-import { ICar } from './types'
+import { ICar } from 'interfaces'
 
 export const updateCar = async ({
   color,
