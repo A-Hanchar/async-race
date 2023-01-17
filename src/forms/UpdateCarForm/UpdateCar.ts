@@ -1,7 +1,7 @@
-import { getCarById, updateCar } from 'api'
+import { getCarById, updateCar } from 'api/garage'
 import { CARS_MANUFACTORY } from 'enums'
-import { createElementWithClassName, getCarParamsByName } from 'helpers'
-import { addOptionsToSelect } from 'helpers/addOptionsToSelect'
+import { getCarParamsByName, addOptionsToSelect, createElementWithClassNameAndAppendNode } from 'helpers'
+import { EmptyString } from 'types'
 import { modelOptionsByManufactories } from 'variables'
 
 import { ActionButtons } from './components/ActionButtons'
@@ -16,15 +16,13 @@ export const UpdateCarForm = async ({ carId, onCancel }: UpdateCarProps) => {
 
   const { carManufactory, carModel } = getCarParamsByName(name)
 
-  const form = createElementWithClassName({ tagName: 'form', classname: styles.form })
-
   const { label: colorLabel, input: colorInput } = ColorPick({ value: color })
   const { label: manufactoryLabel, select: manufactorySelect } = ManufactorySelect({ defaultValue: carManufactory })
   const { label: modelLabel, select: modelSelect } = ModelSelect()
   const { wrapper: actionButtonsWrapper, submitButton } = ActionButtons({ onCancel })
 
   const updateModelOptions = () => {
-    const manufactoryValue = manufactorySelect.value as CARS_MANUFACTORY | ''
+    const manufactoryValue = manufactorySelect.value as CARS_MANUFACTORY | EmptyString
 
     if (manufactoryValue) {
       manufactoryLabel.after(modelLabel)
@@ -69,7 +67,11 @@ export const UpdateCarForm = async ({ carId, onCancel }: UpdateCarProps) => {
     updateSubmitButton()
   })
 
-  form.append(colorLabel, manufactoryLabel, modelLabel, actionButtonsWrapper)
+  const form = createElementWithClassNameAndAppendNode({
+    tagName: 'form',
+    classname: styles.form,
+    children: [colorLabel, manufactoryLabel, modelLabel, actionButtonsWrapper],
+  })
 
   updateModelOptions()
 

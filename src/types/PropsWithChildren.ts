@@ -1,1 +1,3 @@
-export type PropsWithChildren<P = unknown> = P & { children?: Node | string }
+import { ChildrenNode } from './ChildrenNode'
+
+export type PropsWithChildren<P = unknown> = P & { children?: ChildrenNode }

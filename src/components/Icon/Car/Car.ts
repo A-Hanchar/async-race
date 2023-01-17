@@ -1,10 +1,11 @@
 import { SVGContainer } from '../SVGContainer'
+import { linkW3OrgSVG } from '../SVGContainer/constants'
 import { IconProps } from '../types'
 
 export const Car = ({ fill, width, height }: IconProps) => {
   const svg = SVGContainer({ fill, width, height, viewBox: '0 0 700 200 ' })
 
-  const iconPath = document.createElementNS('http://www.w3.org/2000/svg', 'path')
+  const iconPath = document.createElementNS(linkW3OrgSVG, 'path')
 
   iconPath.setAttribute(
     'd',
