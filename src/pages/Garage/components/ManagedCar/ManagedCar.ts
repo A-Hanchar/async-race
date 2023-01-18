@@ -10,7 +10,14 @@ import { StartEngine } from '../StartEngine'
 import { StopEngine } from '../StopEngine'
 import { UpdateCar } from '../UpdateCar'
 
-export const ManagedCar = ({ color, carId, name }: ManagedCarProps) => {
+export const ManagedCar = ({
+  color,
+  carId,
+  name,
+  startEngineButtons,
+  raceButton,
+  stopEngineButtons,
+}: ManagedCarProps) => {
   const manageCarButtons = createElementWithClassNameAndAppendNode({
     tagName: 'div',
     classname: styles.manageCarButtons,
@@ -18,7 +25,11 @@ export const ManagedCar = ({ color, carId, name }: ManagedCarProps) => {
   })
 
   const startEngine = StartEngine()
+  startEngineButtons.push(startEngine)
+
   const stopEngine = StopEngine()
+  stopEngineButtons.push(stopEngine)
+
   const iconCar = Car({ color })
 
   const engineButtonsWrapper = createElementWithClassNameAndAppendNode({
@@ -34,11 +45,17 @@ export const ManagedCar = ({ color, carId, name }: ManagedCarProps) => {
   })
 
   useSwitchEngineButtons({
-    carId,
+    carInfo: {
+      color,
+      id: carId,
+      name,
+    },
     carSVG: iconCar,
     startEngineButton: startEngine,
     stopEngineButton: stopEngine,
     road: roadWrapper,
+    raceButton,
+    startEngineButtons,
   })
 
   const wrapper = createElementWithClassNameAndAppendNode({

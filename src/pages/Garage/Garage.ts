@@ -12,14 +12,23 @@ export const Garage = async () => {
 
   const countElements = totalElements ? `(${totalElements})` : ''
 
+  const startEngineButtons: HTMLButtonElement[] = []
+  const stopEngineButtons: HTMLButtonElement[] = []
+
+  const { wrapper: topButtonsWrapper, raceButton } = TopButtons({ startEngineButtons, stopEngineButtons })
+
+  const managedCars = cars.map(({ color, id, name }) =>
+    ManagedCar({ carId: id, color, name, startEngineButtons, raceButton, stopEngineButtons }),
+  )
+
   const wrapper = createElementWithClassNameAndAppendNode({
     tagName: 'div',
     classname: styles.wrapper,
-    children: [Text({ tagName: 'h1', text: `Garage: ${countElements}`, classname: styles.title }), TopButtons()],
-  })
-
-  cars.forEach(({ color, id, name }) => {
-    wrapper.append(ManagedCar({ carId: id, color, name }))
+    children: [
+      Text({ tagName: 'h1', text: `Garage: ${countElements}`, classname: styles.title }),
+      topButtonsWrapper,
+      ...managedCars,
+    ],
   })
 
   return wrapper
