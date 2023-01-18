@@ -4,4 +4,5 @@ export enum SYMBOL {
   LATTICE = '#',
   QUESTION = '?',
   EQUAL = '=',
+  AND = '&',
 }

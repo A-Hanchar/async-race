@@ -1,14 +1,5 @@
 import { BASE_URL, winners } from 'api/endPoints'
-import { IWinner } from 'interfaces/IWinner'
+import { request } from 'api/request'
+import { IWinner } from 'interfaces'
 
-export const getWinnerById = async (carId: number) => {
-  const response = await fetch(`${BASE_URL}${winners}/${carId}`)
-
-  if (!response.ok) {
-    throw new Error(response.statusText)
-  }
-
-  const data = (await response.json()) as IWinner
-
-  return data
-}
+export const getWinnerById = (carId: number) => request<IWinner>(`${BASE_URL}${winners}/${carId}`)

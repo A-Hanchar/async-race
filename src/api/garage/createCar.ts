@@ -1,4 +1,6 @@
 import { BASE_URL, garage } from 'api/endPoints'
+import { request } from 'api/request'
+import { METHOD } from 'enums'
 import { ICar } from 'interfaces'
 
 import { CreateCarRequestData } from './types'
@@ -9,11 +11,11 @@ export const createCar = ({ manufactory, model, color }: CreateCarRequestData) =
     color,
   }
 
-  return fetch(`${BASE_URL}${garage}`, {
-    method: 'POST',
+  return request<ICar>(`${BASE_URL}${garage}`, {
+    method: METHOD.POST,
     headers: {
       'Content-Type': 'application/json;charset=utf-8',
     },
     body: JSON.stringify(body),
-  }).then((response): Promise<ICar> => response.json())
+  })
 }

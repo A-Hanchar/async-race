@@ -1,14 +1,14 @@
 import { getCars } from 'api/garage'
 import { Text } from 'components/Text'
 import { createElementWithClassNameAndAppendNode } from 'helpers'
-import { pageSize } from 'variables'
+import { pageCarsSize } from 'variables'
 
 import { ManagedCar } from './components/ManagedCar'
 import { TopButtons } from './components/TopButtons'
 import styles from './styles.module.css'
 
 export const Garage = async () => {
-  const { cars, totalElements } = await getCars({ _limit: pageSize })
+  const { cars, totalElements } = await getCars({ _limit: pageCarsSize })
 
   const countElements = totalElements ? `(${totalElements})` : ''
 

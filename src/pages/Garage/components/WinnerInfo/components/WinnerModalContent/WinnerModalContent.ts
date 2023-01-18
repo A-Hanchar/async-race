@@ -1,6 +1,6 @@
 import { Text } from 'components/Text'
 import { createElementWithClassNameAndAppendNode } from 'helpers'
-import { oneSecond, three } from 'variables'
+import { convertMsToSec } from 'utils'
 
 import styles from './styles.module.css'
 import { WinnerModalContentProps } from './types'
@@ -17,7 +17,7 @@ export const WinnerModalContent = ({ manufactory, model, time }: WinnerModalCont
     },
     {
       title: 'Time: ',
-      description: `${(time / oneSecond).toFixed(three)} sec`,
+      description: `${convertMsToSec(time)} sec`,
     },
   ].map(({ title, description }) => {
     const itemTitle = Text({ tagName: 'p', text: title, classname: styles.itemTitle })
