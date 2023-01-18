@@ -1,0 +1,34 @@
+.sortButton {
+  padding: 0.625rem;
+  cursor: pointer;
+  background-color: var(--color-white);
+  border: none;
+  border-radius: 0.25rem;
+}
+
+.arrowsWrapper {
+  display: flex;
+}
+
+.arrow {
+  width: 0;
+  height: 0;
+  border-right: 7px solid transparent;
+  border-left: 7px solid transparent;
+}
+
+.arrowAsc {
+  border-bottom: 14px solid var(--color-gold);
+}
+
+.arrowAsc[DATA_SORT_TYPE="desc"] {
+  opacity: 0.4;
+}
+
+.arrowDesc {
+  border-top: 14px solid var(--color-gold);
+}
+
+.arrowDesc[DATA_SORT_TYPE="asc"] {
+  opacity: 0.4;
+}

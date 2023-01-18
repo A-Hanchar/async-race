@@ -1,0 +1,10 @@
+.wrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.625rem;
+}

@@ -1,37 +1,25 @@
 import { BASE_URL, garage } from 'api/endPoints'
-import { SYMBOL } from 'enums'
 import { ICar, IGetCarsResponse } from 'interfaces'
+import { generateQueryURL } from 'utils'
 
 import { QueryParams } from './types'
 
-export const getCars = ({ _limit, _page }: QueryParams) => {
-  let requestUrl = `${BASE_URL}${garage}`
+export const getCars = async ({ _limit, _page }: QueryParams) => {
+  const queryUrl = generateQueryURL({ _limit, _page })
 
-  const queryParamsEntries = Object.entries({
-    _limit,
-    _page,
-  }).filter(([, value]) => !!value)
+  const response = await fetch(`${BASE_URL}${garage}${queryUrl}`)
 
-  if (queryParamsEntries.length) {
-    requestUrl += SYMBOL.QUESTION
-
-    queryParamsEntries.forEach(([key, value]) => {
-      const param = `${key}${SYMBOL.EQUAL}${value!}`
-
-      requestUrl += param
-    })
-
-    return fetch(requestUrl).then(
-      async (response): Promise<IGetCarsResponse> => ({
-        cars: (await response.json()) as ICar[],
-        totalElements: Number(response.headers.get('X-Total-Count')),
-      }),
-    )
+  if (!response.ok) {
+    throw new Error(response.statusText)
   }
 
-  return fetch(requestUrl).then(
-    async (response): Promise<IGetCarsResponse> => ({
-      cars: (await response.json()) as ICar[],
-    }),
-  )
+  const cars = (await response.json()) as ICar[]
+  const totalItemCars = response.headers.get('X-Total-Count')
+
+  const data: IGetCarsResponse = {
+    cars,
+    totalElements: totalItemCars ? Number(totalItemCars) : null,
+  }
+
+  return data
 }

@@ -1,5 +1,5 @@
 import { SORT_TYPE } from 'enums'
-import { IWinner } from 'interfaces/IWinner'
+import { IWinner } from 'interfaces'
 
 export type CreateWinnerRequestData = {
   id: number
