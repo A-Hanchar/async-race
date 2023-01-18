@@ -1,23 +1,15 @@
 import { BASE_URL, garage } from 'api/endPoints'
 import { ICar } from 'interfaces'
 
-export const updateCar = async ({
-  color,
-  manufactory,
-  model,
-  carId,
-}: {
-  model: string
-  manufactory: string
-  color: string
-  carId: number
-}) => {
+import { UpdateCarRequestData } from './types'
+
+export const updateCar = ({ color, manufactory, model, carId }: UpdateCarRequestData) => {
   const body = {
     name: `${manufactory}: ${model}`,
     color,
   }
 
-  return await fetch(`${BASE_URL}${garage}/${carId}`, {
+  return fetch(`${BASE_URL}${garage}/${carId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json;charset=utf-8',

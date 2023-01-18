@@ -3,13 +3,13 @@ import { ICar } from 'interfaces'
 
 import { CreateCarRequestData } from './types'
 
-export const createCar = async ({ manufactory, model, color }: CreateCarRequestData) => {
+export const createCar = ({ manufactory, model, color }: CreateCarRequestData) => {
   const body = {
     name: `${manufactory}: ${model}`,
     color,
   }
 
-  return await fetch(`${BASE_URL}${garage}`, {
+  return fetch(`${BASE_URL}${garage}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json;charset=utf-8',

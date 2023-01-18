@@ -28,6 +28,8 @@ module.exports = {
   },
   plugins: ['@typescript-eslint'],
   rules: {
+    'class-methods-use-this': 'off',
+    'no-param-reassign': 'off',
     'import/prefer-default-export': 'off',
     'import/no-absolute-path': 'off',
     '@typescript-eslint/array-type': [
