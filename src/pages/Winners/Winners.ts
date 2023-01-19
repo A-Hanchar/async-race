@@ -2,8 +2,9 @@ import { getWinners, getWinnersCount } from 'api/winners'
 import { Pagination } from 'components/Pagination'
 import { SortBy } from 'components/SortBy'
 import { Text } from 'components/Text'
+import { SESSION_STORAGE_KEY } from 'enums'
 import { createElementWithClassName, createElementWithClassNameAndAppendNode } from 'helpers'
-import { pageWinnersSize } from 'variables'
+import { one, pageWinnersSize } from 'variables'
 
 import { WinnerInfoBlock } from './components/WinnerInfoBlock'
 
@@ -24,7 +25,9 @@ export const Winners = async () => {
     })
 
     const winnerBlocks = await Promise.all(
-      winners.map(({ id, time, wins }) => WinnerInfoBlock({ carId: id, time, wins })),
+      winners.map(({ id, time, wins }, index) =>
+        WinnerInfoBlock({ carId: id, time, wins, orderNumber: (currentPage - one) * pageSize + (index + one) }),
+      ),
     )
 
     currentPageTextWrapper.replaceChildren(
@@ -55,6 +58,7 @@ export const Winners = async () => {
     size: pageWinnersSize,
     totalElements,
     renderContent,
+    key: SESSION_STORAGE_KEY.CURRENT_WINNER_PAGE,
   })
 
   const wrapper = createElementWithClassNameAndAppendNode({

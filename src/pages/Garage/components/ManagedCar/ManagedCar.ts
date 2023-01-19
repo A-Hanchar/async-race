@@ -14,24 +14,29 @@ export const ManagedCar = ({
   color,
   carId,
   name,
-  startEngineButtons,
-  raceButton,
-  stopEngineButtons,
   renderGarageContent,
+  managedCarButtons,
+  topControlButtons,
 }: ManagedCarProps) => {
+  const iconCar = Car({ color })
+  const updateCarButton = UpdateCar({ carId, renderGarageContent })
+  const removeCarButton = RemoveCar({ carId, renderGarageContent })
+  const startEngine = StartEngine()
+  const stopEngine = StopEngine()
+
+  managedCarButtons.push({
+    removeCarButton,
+    startEngineButton: startEngine,
+    stopEngineButton: stopEngine,
+    updateCarButton,
+    carId,
+  })
+
   const manageCarButtons = createElementWithClassNameAndAppendNode({
     tagName: 'div',
     classname: styles.manageCarButtons,
-    children: [UpdateCar({ carId, renderGarageContent }), RemoveCar({ carId, renderGarageContent })],
+    children: [updateCarButton, removeCarButton],
   })
-
-  const startEngine = StartEngine()
-  startEngineButtons.push(startEngine)
-
-  const stopEngine = StopEngine()
-  stopEngineButtons.push(stopEngine)
-
-  const iconCar = Car({ color })
 
   const engineButtonsWrapper = createElementWithClassNameAndAppendNode({
     tagName: 'div',
@@ -52,11 +57,9 @@ export const ManagedCar = ({
       name,
     },
     carSVG: iconCar,
-    startEngineButton: startEngine,
-    stopEngineButton: stopEngine,
     road: roadWrapper,
-    raceButton,
-    startEngineButtons,
+    managedCarButtons,
+    topManagedButton: topControlButtons,
   })
 
   const wrapper = createElementWithClassNameAndAppendNode({

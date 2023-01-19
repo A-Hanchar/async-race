@@ -5,6 +5,7 @@ import { RouterOwnObject } from './types'
 
 export const rootRoute: RouterOwnObject = {
   path: routerPath.home,
+  content: Garage,
 }
 
 export const notFoundRoute: RouterOwnObject = {

@@ -1,5 +1,6 @@
 import { SESSION_STORAGE_KEY } from 'enums'
 import { ICar } from 'interfaces'
+import { one } from 'variables'
 
 type SessionStorageWinner = {
   car: ICar
@@ -31,6 +32,14 @@ class SessionStorageInstanse {
 
   removeCurrentWinner() {
     sessionStorage.removeItem(SESSION_STORAGE_KEY.CURRENT_WINNER)
+  }
+
+  setCurrentPage(key: SESSION_STORAGE_KEY.CURRENT_GARAGE_PAGE | SESSION_STORAGE_KEY.CURRENT_WINNER_PAGE, page: number) {
+    sessionStorage.setItem(key, String(page))
+  }
+
+  getCurrentPage(key: SESSION_STORAGE_KEY.CURRENT_GARAGE_PAGE | SESSION_STORAGE_KEY.CURRENT_WINNER_PAGE) {
+    return this.getValue<number>(key) ?? one
   }
 }
 

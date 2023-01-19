@@ -5,8 +5,8 @@ import styles from './styles.module.css'
 import { WinnerTitleProps } from './types'
 import { Car } from '../Car'
 
-export const WinnerTitle = ({ carName, color }: WinnerTitleProps) => {
-  const carNameTitle = Text({ tagName: 'h2', text: carName, classname: styles.title })
+export const WinnerTitle = ({ carName, color, orderNumber }: WinnerTitleProps) => {
+  const carNameTitle = Text({ tagName: 'h2', text: `${orderNumber}. ${carName}`, classname: styles.title })
 
   const wrapper = createElementWithClassNameAndAppendNode({
     tagName: 'div',

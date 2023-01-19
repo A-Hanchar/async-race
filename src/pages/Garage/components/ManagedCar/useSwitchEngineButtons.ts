@@ -2,6 +2,7 @@
 import { startEngine, stopEngine, switchToDriveMode } from 'api/engine'
 import { sessionStorageInstanse } from 'helpers'
 import { ICar } from 'interfaces'
+import { ManagedCarButtons, TopButtonsData } from 'pages/Garage/types'
 import { converterPxToRem } from 'utils'
 import { zero } from 'variables'
 
@@ -10,23 +11,21 @@ import { RACE_BUTTON_DATA_ATTRIBUTE } from '../Race'
 import { setWinner, WinnerInfo } from '../WinnerInfo'
 
 export const useSwitchEngineButtons = ({
-  startEngineButton,
-  stopEngineButton,
   carSVG,
   carInfo,
   road,
-  raceButton,
-  startEngineButtons,
+  managedCarButtons,
+  topManagedButton: { raceButton },
 }: {
-  startEngineButton: HTMLButtonElement
-  stopEngineButton: HTMLButtonElement
   carSVG: SVGSVGElement
   road: HTMLDivElement
-  raceButton: HTMLButtonElement
-  startEngineButtons: HTMLButtonElement[]
   carInfo: ICar
+  managedCarButtons: ManagedCarButtons[]
+  topManagedButton: TopButtonsData
 }) => {
   let animationId = zero
+
+  const { startEngineButton, stopEngineButton } = managedCarButtons.find(({ carId }) => carId === carInfo.id)!
 
   const carAnimation = ({ distance, velocity }: { distance: number; velocity: number }) => {
     const startAnimation = performance.now()
@@ -46,6 +45,13 @@ export const useSwitchEngineButtons = ({
 
       if (newPosition < maxDistanse) {
         animationId = requestAnimationFrame(animation)
+
+        return
+      }
+
+      if (!roadWidth) {
+        cancelAnimationFrame(animationId)
+        switchEngineController.abort()
 
         return
       }
@@ -103,7 +109,9 @@ export const useSwitchEngineButtons = ({
     cancelAnimationFrame(animationId)
 
     startEngineButton.disabled = false
-    raceButton.disabled = !startEngineButtons.every((button) => !button.disabled)
+    raceButton.disabled = !managedCarButtons.every(
+      ({ startEngineButton: checkedStartEngineButton }) => !checkedStartEngineButton.disabled,
+    )
     carSVG.style.left = ''
   }
 

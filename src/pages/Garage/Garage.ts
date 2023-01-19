@@ -1,12 +1,14 @@
 import { getCars, getCarsCount } from 'api/garage'
 import { Pagination } from 'components/Pagination'
 import { Text } from 'components/Text'
+import { SESSION_STORAGE_KEY } from 'enums'
 import { createElementWithClassName } from 'helpers'
 import { pageCarsSize } from 'variables'
 
 import { ManagedCar } from './components/ManagedCar'
 import { TopButtons } from './components/TopButtons'
 import styles from './styles.module.css'
+import { ManagedCarButtons } from './types'
 
 export const Garage = async () => {
   let initialTotalElements = await getCarsCount()
@@ -19,13 +21,11 @@ export const Garage = async () => {
     if (initialTotalElements !== totalElements) {
       initialTotalElements = totalElements
 
-      const { currentPage } = getPaginationParams()
-
       const { paginationWrapper: newPaginationWrapper, getPaginationParams: newGetPaginationParams } = Pagination({
         size: pageCarsSize,
         totalElements: initialTotalElements,
-        initialCurrentPage: currentPage,
         renderContent,
+        key: SESSION_STORAGE_KEY.CURRENT_GARAGE_PAGE,
       })
 
       paginationWrapper = newPaginationWrapper
@@ -36,13 +36,11 @@ export const Garage = async () => {
 
     const cars = await getCars({ _limit: pageSize, _page: currentPage })
 
-    const startEngineButtons: HTMLButtonElement[] = []
-    const stopEngineButtons: HTMLButtonElement[] = []
+    const managedCarButtons: ManagedCarButtons[] = []
 
-    const { wrapper: topButtonsWrapper, raceButton } = TopButtons({
-      startEngineButtons,
-      stopEngineButtons,
+    const { wrapper: topButtonsWrapper, topButtons } = TopButtons({
       renderGarageContent: renderContent,
+      managedCarButtons,
     })
 
     const managedCars = cars.map(({ color, id, name }) =>
@@ -50,10 +48,9 @@ export const Garage = async () => {
         carId: id,
         color,
         name,
-        startEngineButtons,
-        raceButton,
-        stopEngineButtons,
         renderGarageContent: renderContent,
+        managedCarButtons,
+        topControlButtons: topButtons,
       }),
     )
 
@@ -70,6 +67,7 @@ export const Garage = async () => {
     size: pageCarsSize,
     totalElements: initialTotalElements,
     renderContent,
+    key: SESSION_STORAGE_KEY.CURRENT_GARAGE_PAGE,
   })
 
   let paginationWrapper = initialPaginationWrapper
