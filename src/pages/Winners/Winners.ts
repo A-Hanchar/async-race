@@ -1,9 +1,8 @@
-import { getWinners } from 'api/winners'
+import { getWinners, getWinnersCount } from 'api/winners'
+import { Pagination } from 'components/Pagination'
 import { SortBy } from 'components/SortBy'
 import { Text } from 'components/Text'
-import { SORT_TYPE } from 'enums'
 import { createElementWithClassName, createElementWithClassNameAndAppendNode } from 'helpers'
-import { IWinner } from 'interfaces'
 import { pageWinnersSize } from 'variables'
 
 import { WinnerInfoBlock } from './components/WinnerInfoBlock'
@@ -11,46 +10,66 @@ import { WinnerInfoBlock } from './components/WinnerInfoBlock'
 import styles from './styles.module.css'
 
 export const Winners = async () => {
-  const pageTitleWrapper = createElementWithClassName({ tagName: 'div' })
-  let winnerBlocks: HTMLDivElement[] = []
+  const totalElements = await getWinnersCount()
 
-  const winnerBlocksWrapper = createElementWithClassNameAndAppendNode({
-    tagName: 'div',
-    children: winnerBlocks,
-    classname: styles.winnerBlockWrapper,
-  })
+  const renderContent = async () => {
+    const { currentPage, pageSize, totalPages } = getPaginationParams()
+    const { _order, _sort } = getSortingParams()
 
-  const renderContent = async ({ _sort, _order }: { _sort?: keyof IWinner; _order?: SORT_TYPE }) => {
-    const { totalElements, winners } = await getWinners({
-      _limit: pageWinnersSize,
+    const winners = await getWinners({
+      _limit: pageSize,
+      _page: currentPage,
       _sort,
       _order,
     })
 
-    winnerBlocks = await Promise.all(winners.map(({ id, time, wins }) => WinnerInfoBlock({ carId: id, time, wins })))
+    const winnerBlocks = await Promise.all(
+      winners.map(({ id, time, wins }) => WinnerInfoBlock({ carId: id, time, wins })),
+    )
 
-    const countElements = totalElements ? `(${totalElements})` : ''
-    const pageTitle = Text({ tagName: 'h1', text: `Garage: ${countElements}`, classname: styles.title })
+    currentPageTextWrapper.replaceChildren(
+      Text({ tagName: 'h2', text: `Page: ${currentPage} / ${totalPages}`, classname: styles.title }),
+    )
 
-    pageTitleWrapper.replaceChildren(pageTitle)
     winnerBlocksWrapper.replaceChildren(...winnerBlocks)
   }
+
+  const currentPageTextWrapper = createElementWithClassName({
+    tagName: 'div',
+  })
+
+  const { sortByWrapper, getSortingParams } = SortBy({
+    elements: [
+      { title: 'Time', key: 'time' },
+      { title: 'Count wins', key: 'wins' },
+    ],
+    renderContent,
+  })
+
+  const winnerBlocksWrapper = createElementWithClassName({
+    tagName: 'div',
+    classname: styles.winnerBlockWrapper,
+  })
+
+  const { paginationWrapper, getPaginationParams } = Pagination({
+    size: pageWinnersSize,
+    totalElements,
+    renderContent,
+  })
 
   const wrapper = createElementWithClassNameAndAppendNode({
     tagName: 'div',
     classname: styles.wrapper,
     children: [
-      pageTitleWrapper,
-      await SortBy({
-        elements: [
-          { title: 'Time', key: 'time' },
-          { title: 'Count wins', key: 'wins' },
-        ],
-        renderContent,
-      }),
+      Text({ tagName: 'h1', text: `Winners (${totalElements})`, classname: styles.title }),
+      currentPageTextWrapper,
+      sortByWrapper,
       winnerBlocksWrapper,
+      paginationWrapper,
     ],
   })
+
+  await renderContent()
 
   return wrapper
 }

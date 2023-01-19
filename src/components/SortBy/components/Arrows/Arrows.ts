@@ -5,7 +5,7 @@ import { createElementWithClassName, createElementWithClassNameAndAppendNode } f
 import styles from './styles.module.css'
 import { ArrowsProps, ARROW_DATA_ATTRIBUTE } from './types'
 
-export const Arrows = ({ onclick }: ArrowsProps) => {
+export const Arrows = ({ updateOrder, renderContent }: ArrowsProps) => {
   let currentSort = SORT_TYPE.ASC
 
   const arrowAsc = createElementWithClassName({ tagName: 'span', classname: [styles.arrowAsc, styles.arrow] })
@@ -26,8 +26,9 @@ export const Arrows = ({ onclick }: ArrowsProps) => {
     currentSort = currentSort === SORT_TYPE.ASC ? SORT_TYPE.DESC : SORT_TYPE.ASC
 
     setArrowsSortType()
+    updateOrder(currentSort)
 
-    await onclick(currentSort)
+    await renderContent()
   }
 
   setArrowsSortType()

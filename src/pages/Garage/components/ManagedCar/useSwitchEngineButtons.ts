@@ -35,7 +35,7 @@ export const useSwitchEngineButtons = ({
 
     const animation = (time: number) => {
       const roadWidth = road.offsetWidth
-      const roadWorkedWidth = road.offsetWidth - carWidth
+      const roadWorkedWidth = roadWidth - carWidth
 
       const maxDistanse = (roadWorkedWidth / roadWidth) * maxRoadDistanse
 
