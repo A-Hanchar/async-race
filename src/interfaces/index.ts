@@ -1,6 +1,4 @@
 export * from './ICar'
-export * from './IGetCarsResponse'
 export * from './IEngine'
 export * from './IEngineWorkStatus'
-export * from './IGetWinnersResponse'
 export * from './IWinner'

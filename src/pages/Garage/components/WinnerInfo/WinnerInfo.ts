@@ -32,7 +32,7 @@ export const WinnerInfo = () => {
         classname: styles.modalWrapper,
       })
 
-      modal = Modal({ children: modalContent, title: 'Congrats', onCancel: handleCloseModal })
+      modal = Modal({ children: modalContent, title: 'Congrats' })
 
       Body.append(modal)
     }

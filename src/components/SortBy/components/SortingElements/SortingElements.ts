@@ -6,11 +6,13 @@ import { SortingElementsProps } from './types'
 import { SortElement } from '../SortElement'
 import { SortElement as SortElementType } from '../SortElement/types'
 
-export const SortingElements = ({ elements, hiddenClassname, onclick }: SortingElementsProps) => {
-  const handleClick = ({ key, title }: SortElementType) => {
+export const SortingElements = ({ elements, hiddenClassname, updateSort, renderContent }: SortingElementsProps) => {
+  const handleClick = async ({ key, title }: SortElementType) => {
     addClassnameToElement({ element: wrapper, classname: hiddenClassname })
 
-    onclick({ key, title })
+    updateSort({ key, title })
+
+    await renderContent()
   }
 
   const sortElements = elements.map(({ key, title }) =>

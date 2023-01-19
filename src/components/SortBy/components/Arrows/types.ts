@@ -1,7 +1,8 @@
 import { SORT_TYPE } from 'enums'
 
 export type ArrowsProps = {
-  onclick: (newOrder: SORT_TYPE) => Promise<void>
+  updateOrder: (newOrder: SORT_TYPE) => void
+  renderContent: () => Promise<void>
 }
 
 export enum ARROW_DATA_ATTRIBUTE {
