@@ -1,10 +1,11 @@
 import { BASE_URL, winners } from 'api/endPoints'
+import { SORT_TYPE } from 'enums'
 import { IGetWinnersResponse, IWinner } from 'interfaces'
 import { generateQueryURL } from 'utils'
 
 import { QueryParams } from './types'
 
-export const getWinners = async ({ _limit, _order, _page, _sort }: QueryParams) => {
+export const getWinners = async ({ _limit, _order = SORT_TYPE.ASC, _page, _sort }: QueryParams) => {
   const queryUrl = generateQueryURL({ _limit, _page, _order, _sort })
 
   const response = await fetch(`${BASE_URL}${winners}${queryUrl}`)

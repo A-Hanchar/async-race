@@ -5,8 +5,9 @@ import { getRandomColorHex, getRandomInt } from 'utils'
 import { manufactoriesOptions, modelOptionsByManufactories, one, zero } from 'variables'
 
 import styles from './styles.module.css'
+import { GenerateCarsProps } from './types'
 
-export const GenerateCars = () => {
+export const GenerateCars = ({ renderGarageContent }: GenerateCarsProps) => {
   const handleGenerateCars = async () => {
     button.disabled = true
 
@@ -30,6 +31,7 @@ export const GenerateCars = () => {
     }
 
     await Promise.allSettled(carsData.map(createCar))
+    await renderGarageContent()
 
     button.disabled = false
   }

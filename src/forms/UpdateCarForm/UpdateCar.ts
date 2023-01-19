@@ -11,7 +11,7 @@ import { ModelSelect } from './components/ModelSelect'
 import styles from './styles.module.css'
 import { UpdateCarProps } from './types'
 
-export const UpdateCarForm = async ({ carId, onCancel }: UpdateCarProps) => {
+export const UpdateCarForm = async ({ carId, onCancel, renderGarageContent }: UpdateCarProps) => {
   const { color, name } = await getCarById(carId)
 
   const { carManufactory, carModel } = getCarParamsByName(name)
@@ -47,6 +47,7 @@ export const UpdateCarForm = async ({ carId, onCancel }: UpdateCarProps) => {
 
     if (manufactoryValue && modelValue) {
       await updateCar({ color: colorInputValue, manufactory: manufactoryValue, model: modelValue, carId })
+      await renderGarageContent()
 
       form.reset()
       onCancel()

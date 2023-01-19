@@ -17,11 +17,12 @@ export const ManagedCar = ({
   startEngineButtons,
   raceButton,
   stopEngineButtons,
+  renderGarageContent,
 }: ManagedCarProps) => {
   const manageCarButtons = createElementWithClassNameAndAppendNode({
     tagName: 'div',
     classname: styles.manageCarButtons,
-    children: [UpdateCar({ carId }), RemoveCar({ carId })],
+    children: [UpdateCar({ carId, renderGarageContent }), RemoveCar({ carId, renderGarageContent })],
   })
 
   const startEngine = StartEngine()

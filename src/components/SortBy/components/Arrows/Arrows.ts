@@ -3,9 +3,9 @@ import { SORT_TYPE } from 'enums'
 import { createElementWithClassName, createElementWithClassNameAndAppendNode } from 'helpers'
 
 import styles from './styles.module.css'
-import { ARROW_DATA_ATTRIBUTE } from './types'
+import { ArrowsProps, ARROW_DATA_ATTRIBUTE } from './types'
 
-export const Arrows = () => {
+export const Arrows = ({ onclick }: ArrowsProps) => {
   let currentSort = SORT_TYPE.ASC
 
   const arrowAsc = createElementWithClassName({ tagName: 'span', classname: [styles.arrowAsc, styles.arrow] })
@@ -22,10 +22,12 @@ export const Arrows = () => {
     children: [arrowAsc, arrowDesc],
   })
 
-  const handleButtonClick = () => {
+  const handleButtonClick = async () => {
     currentSort = currentSort === SORT_TYPE.ASC ? SORT_TYPE.DESC : SORT_TYPE.ASC
 
     setArrowsSortType()
+
+    await onclick(currentSort)
   }
 
   setArrowsSortType()

@@ -1,7 +1,7 @@
-import { SortingKeys } from 'types'
+import { SORT_TYPE } from 'enums'
 
 export type ArrowsProps = {
-  initialKey: SortingKeys
+  onclick: (newOrder: SORT_TYPE) => Promise<void>
 }
 
 export enum ARROW_DATA_ATTRIBUTE {
