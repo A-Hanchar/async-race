@@ -1,8 +1,12 @@
 import { createElementWithClassName } from 'helpers'
 
-import { TextProps } from './types'
+import { TextProps, TextTagName } from './types'
 
-export const Text = ({ tagName, text = '', classname }: TextProps) => {
+export const Text = <T extends keyof HTMLElementTagNameMap = keyof TextTagName>({
+  tagName,
+  text = '',
+  classname,
+}: TextProps<T>) => {
   const textElement = createElementWithClassName({ tagName, classname })
 
   textElement.innerText = text

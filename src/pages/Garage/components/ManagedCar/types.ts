@@ -5,4 +5,5 @@ export type ManagedCarProps = {
   startEngineButtons: HTMLButtonElement[]
   stopEngineButtons: HTMLButtonElement[]
   raceButton: HTMLButtonElement
+  renderGarageContent: () => Promise<void>
 }

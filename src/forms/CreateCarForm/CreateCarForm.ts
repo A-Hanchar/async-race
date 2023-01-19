@@ -11,7 +11,7 @@ import { ModelSelect } from './components/ModelSelect'
 import styles from './styles.module.css'
 import { CreateCarFormProps } from './types'
 
-export const CreateCarForm = ({ onCancel }: CreateCarFormProps) => {
+export const CreateCarForm = ({ onCancel, renderGarageContent }: CreateCarFormProps) => {
   const { label: colorLabel, input: colorInput } = ColorPick()
   const { label: manufactoryLabel, select: manufactorySelect } = ManufactorySelect()
   const { label: modelLabel, select: modelSelect } = ModelSelect()
@@ -45,6 +45,7 @@ export const CreateCarForm = ({ onCancel }: CreateCarFormProps) => {
 
     if (manufactoryValue && modelValue) {
       await createCar({ color, manufactory: manufactoryValue, model: modelValue })
+      await renderGarageContent()
 
       form.reset()
       onCancel()

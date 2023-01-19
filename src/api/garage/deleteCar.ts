@@ -5,7 +5,9 @@ import { METHOD } from 'enums'
 import { EmptyObject } from 'types'
 
 export const deleteCar = async (carId: number) => {
-  await deleteWinner(carId)
+  try {
+    await deleteWinner(carId)
+  } catch (error) {}
 
   const data = await request<EmptyObject>(`${BASE_URL}${garage}/${carId}`, {
     method: METHOD.DELETE,

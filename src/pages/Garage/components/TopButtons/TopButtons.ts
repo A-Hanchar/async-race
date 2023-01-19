@@ -8,7 +8,7 @@ import { GenerateCars } from '../GenerateCars'
 import { Race, RACE_BUTTON_DATA_ATTRIBUTE } from '../Race'
 import { ResetRace } from '../ResetRace'
 
-export const TopButtons = ({ startEngineButtons, stopEngineButtons }: TopButtonsProps) => {
+export const TopButtons = ({ startEngineButtons, stopEngineButtons, renderGarageContent }: TopButtonsProps) => {
   const handleRaceButtonClick = () => {
     sessionStorageInstanse.removeCurrentWinner()
     raceButton.disabled = true
@@ -22,6 +22,7 @@ export const TopButtons = ({ startEngineButtons, stopEngineButtons }: TopButtons
   }
 
   const handleResetraceButtonClick = () => {
+    raceButton.removeAttribute(RACE_BUTTON_DATA_ATTRIBUTE.DATA_RACE_IS_START)
     sessionStorageInstanse.removeCurrentWinner()
     resetRaceButton.disabled = true
 
@@ -32,7 +33,6 @@ export const TopButtons = ({ startEngineButtons, stopEngineButtons }: TopButtons
     })
 
     raceButton.disabled = false
-    raceButton.removeAttribute(RACE_BUTTON_DATA_ATTRIBUTE.DATA_RACE_IS_START)
   }
 
   const raceButton = Race({ onclick: handleRaceButtonClick })
@@ -41,7 +41,7 @@ export const TopButtons = ({ startEngineButtons, stopEngineButtons }: TopButtons
   const wrapper = createElementWithClassNameAndAppendNode({
     tagName: 'div',
     classname: styles.wrapper,
-    children: [CreateCar(), raceButton, resetRaceButton, GenerateCars()],
+    children: [CreateCar({ renderGarageContent }), raceButton, resetRaceButton, GenerateCars({ renderGarageContent })],
   })
 
   return { wrapper, raceButton }

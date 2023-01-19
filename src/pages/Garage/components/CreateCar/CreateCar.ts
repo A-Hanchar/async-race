@@ -4,8 +4,9 @@ import { Modal } from 'components/Modal'
 import { CreateCarForm } from 'forms/CreateCarForm'
 
 import styles from './styles.module.css'
+import { CreateCarProps } from './types'
 
-export const CreateCar = () => {
+export const CreateCar = ({ renderGarageContent }: CreateCarProps) => {
   let createCarForm: HTMLFormElement
   let modal: HTMLDivElement
 
@@ -14,7 +15,7 @@ export const CreateCar = () => {
   }
 
   const handleButtonClick = () => {
-    createCarForm = CreateCarForm({ onCancel: handleCloseModal })
+    createCarForm = CreateCarForm({ onCancel: handleCloseModal, renderGarageContent })
     modal = Modal({ children: createCarForm, title: 'Create Car' })
 
     Body.append(modal)
