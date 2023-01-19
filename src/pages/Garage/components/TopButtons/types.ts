@@ -1,5 +1,6 @@
+import { ManagedCarButtons } from 'pages/Garage/types'
+
 export type TopButtonsProps = {
-  startEngineButtons: HTMLButtonElement[]
-  stopEngineButtons: HTMLButtonElement[]
+  managedCarButtons: ManagedCarButtons[]
   renderGarageContent: () => Promise<void>
 }

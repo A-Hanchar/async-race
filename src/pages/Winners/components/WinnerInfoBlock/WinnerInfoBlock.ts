@@ -6,13 +6,13 @@ import { WinnerInfoBlockProps } from './types'
 import { WinnerDescription } from '../WinnerDescription'
 import { WinnerTitle } from '../WinnerTitle'
 
-export const WinnerInfoBlock = async ({ carId, time, wins }: WinnerInfoBlockProps) => {
+export const WinnerInfoBlock = async ({ carId, time, wins, orderNumber }: WinnerInfoBlockProps) => {
   const { color, name } = await getCarById(carId)
 
   const wrapper = createElementWithClassNameAndAppendNode({
     tagName: 'div',
     classname: styles.wrapper,
-    children: [WinnerTitle({ color, carName: name }), WinnerDescription({ time, wins })],
+    children: [WinnerTitle({ color, carName: name, orderNumber }), WinnerDescription({ time, wins })],
   })
 
   wrapper.style.color = color

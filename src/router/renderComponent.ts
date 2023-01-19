@@ -8,11 +8,11 @@ export const renderComponent = async () => {
   const route = getRoute()
 
   if (route.path === routerPath.notFound) {
-    window.history.pushState({}, '', routerPath.notFound)
+    window.history.replaceState({}, '', routerPath.notFound)
   }
 
   if (route.path === routerPath.home) {
-    window.history.pushState({}, '', routerPath.garage)
+    window.history.replaceState({}, '', routerPath.garage)
   }
 
   const children = await route.content?.()
