@@ -1,0 +1,1 @@
+export { WinnerInfoBlock } from './WinnerInfoBlock'

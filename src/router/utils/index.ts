@@ -1,0 +1,1 @@
+export { getRoute } from './getRoute'

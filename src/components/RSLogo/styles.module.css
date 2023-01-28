@@ -1,0 +1,23 @@
+/* 
+  @see https://codepen.io/sosuke/pen/Pjoqqp - generator from hex to filter
+*/
+
+.link {
+  width: 5rem;
+}
+
+.logo {
+  width: 100%;
+}
+
+.logo.white {
+  filter: brightness(0) invert(1);
+}
+
+.logo.gold {
+  filter: invert(72%) sepia(75%) saturate(764%) hue-rotate(360deg) brightness(105%) contrast(106%);
+}
+
+.logo.gold:hover {
+  filter: invert(59%) sepia(18%) saturate(4272%) hue-rotate(18deg) brightness(94%) contrast(87%);
+}

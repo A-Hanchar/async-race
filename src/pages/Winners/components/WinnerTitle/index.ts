@@ -1,0 +1,1 @@
+export { WinnerTitle } from './WinnerTitle'

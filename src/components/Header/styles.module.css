@@ -1,0 +1,20 @@
+:root {
+  --header-height: 5rem;
+}
+
+.header {
+  box-sizing: border-box;
+  display: flex;
+  grid-area: header;
+  gap: 1rem;
+  align-items: center;
+  height: var(--header-height);
+  padding: 1rem;
+  background-color: var(--color-white-20);
+  box-shadow: 0.0625rem 0 0.625rem var(--color-white);
+}
+
+.link {
+  font-size: 1.25rem;
+  text-decoration: none;
+}

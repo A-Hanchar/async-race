@@ -1,0 +1,1 @@
+export { ManagedCar } from './ManagedCar'

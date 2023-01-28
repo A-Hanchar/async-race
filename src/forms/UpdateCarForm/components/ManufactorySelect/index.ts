@@ -1,0 +1,1 @@
+export { ManufactorySelect } from './ManufactorySelect'

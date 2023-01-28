@@ -1,0 +1,15 @@
+:root {
+  --footer-height: 5rem;
+}
+
+.footer {
+  box-sizing: border-box;
+  display: flex;
+  grid-area: footer;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--footer-height);
+  padding: 1rem;
+  background-color: var(--color-white-20);
+  box-shadow: 0 0 0.625rem var(--color-white);
+}

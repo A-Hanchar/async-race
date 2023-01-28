@@ -1,0 +1,12 @@
+export enum OPEL_MODEL {
+  VECTRA = 'VECTRA',
+  ASTRA = 'ASTRA',
+  COMBO = 'COMBO',
+  CORSA = 'CORSA',
+  CROSSLAND = 'CROSSLAND',
+  INSIGNIA = 'INSIGNIA',
+  MERIVA = 'MERIVA',
+  ZAFIRA = 'ZAFIRA',
+  ADAM = 'ADAM',
+  OMEGA = 'OMEGA',
+}

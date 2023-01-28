@@ -1,0 +1,1 @@
+export { WinnerModalContent } from './WinnerModalContent'

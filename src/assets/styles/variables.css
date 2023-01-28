@@ -1,0 +1,11 @@
+:root {
+  /* COLOR VARIABLES */
+  --color-white: #FFF;
+  --color-white-20: rgb(255 255 255 / 0.2);
+  --color-black: #000;
+  --color-black-75: rgb(0 0 0 / 0.75);
+  --color-gold: #FFD700;
+  --color-gold-dark: #B59410;
+  --color-red: #FF6669;
+  --color-green: #1AB76C;
+}

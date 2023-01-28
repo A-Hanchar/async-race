@@ -1,0 +1,11 @@
+.link {
+  font-size: 1rem;
+}
+
+.gold {
+  color: var(--color-gold);
+}
+
+.link.gold:is(:hover) {
+  color: var(--color-gold-dark);
+}

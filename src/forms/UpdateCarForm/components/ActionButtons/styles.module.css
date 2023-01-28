@@ -1,0 +1,28 @@
+.wrapper {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 9.375rem;
+  height: 2.1875rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: none;
+  border: none;
+  border-radius: 0.25rem;
+}
+
+.submitButton {
+  color: var(--color-white);
+  background-color: var(--color-green);
+}
+
+.cancelButton {
+  color: var(--color-white);
+  background-color: var(--color-red);
+}

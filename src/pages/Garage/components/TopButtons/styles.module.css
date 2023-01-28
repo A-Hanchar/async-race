@@ -1,0 +1,7 @@
+.wrapper {
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 3px groove var(--color-white);
+}
